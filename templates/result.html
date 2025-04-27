@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prediction Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <nav class="nav">
+      <div class="logo">BMI Predictor</div>
+      <div class="nav-links">
+          <a href="{{ url_for('home') }}">Home</a>
+          <a href="{{ url_for('form') }}">Predict</a>
+          <a href="about.html">About</a>
+      </div>
+  </nav>
+  <div class="container1">
+      <h2>Your Predicted BMI_Post is: {{ prediction | round(2) }}</h2>
+      
+      {% if prediction < 18.5 %}
+        <p>Your BMI category is: Underweight</p>
+        <p><strong>Recommendations:</strong></p>
+        <ul>
+            <li>Increase your calorie intake with healthy, nutrient-dense foods like nuts, avocados, and whole grains.</li>
+            <li>Include protein-rich foods (e.g., lean meats, legumes, and dairy) to support muscle mass.</li>
+            <li>Engage in strength training exercises to build muscle.</li>
+            <li>Consult a healthcare provider to rule out any underlying health issues.</li>
+        </ul>
+        
+      {% elif 18.5 <= prediction < 24.9 %}
+        <p>Your BMI category is: Normal weight</p>
+        <p><strong>Recommendations:</strong></p>
+        <ul>
+            <li>Maintain a balanced diet with a variety of fruits, vegetables, lean proteins, and whole grains.</li>
+            <li>Stay physically active with regular exercise, including both cardio and strength training.</li>
+            <li>Ensure you are getting enough sleep and managing stress effectively.</li>
+            <li>Continue with regular health check-ups to stay on top of your overall well-being.</li>
+        </ul>
+        
+      {% elif 25 <= prediction < 29.9 %}
+        <p>Your BMI category is: Overweight</p>
+        <p><strong>Recommendations:</strong></p>
+        <ul>
+            <li>Consider focusing on portion control and reducing the intake of high-calorie, high-fat foods.</li>
+            <li>Increase your physical activity levels, aiming for at least 150 minutes of moderate-intensity exercise per week.</li>
+            <li>Incorporate more whole foods like fruits, vegetables, and lean proteins into your diet.</li>
+            <li>Track your eating habits and physical activity to help with mindful decision-making.</li>
+        </ul>
+        
+      {% else %}
+        <p>Your BMI category is: Obesity</p>
+        <p><strong>Recommendations:</strong></p>
+        <ul>
+            <li>Consider consulting a healthcare provider or a nutritionist to develop a safe and sustainable weight loss plan.</li>
+            <li>Engage in regular physical activity, focusing on both cardio (e.g., walking, cycling) and strength training.</li>
+            <li>Adopt a balanced diet that is low in processed foods and high in whole, nutrient-rich foods.</li>
+            <li>Track your progress and seek support groups or professional guidance to stay motivated.</li>
+        </ul>
+      {% endif %}
+      
+      <a href="{{ url_for('form') }}" class="button">Make Another Prediction</a>
+  </div>
+</body>
+</html>

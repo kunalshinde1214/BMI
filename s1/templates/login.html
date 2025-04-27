@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - COVID BMI Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}"/>
+</head>
+<body>
+  <nav class="nav">
+    <div class="logo">BMI Predictor</div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Predict</a>
+      <a href="#">About</a>
+    </div>
+  </nav>
+
+  <section id="login" class="section">
+    <div class="container" style="max-width: 400px;">
+      <h2 class="section-title" style="text-align: center;">Login</h2>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <ul class="flashes">
+            {% for category, message in messages %}
+              <li class="flash flash-{{ category }}">{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+      <form method="POST" action="{{ url_for('login') }}" class="form-card">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" class="input" placeholder="Enter your email" required/>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" class="input" placeholder="Enter your password" required/>
+
+        <button type="submit" class="button" style="width: 100%; margin-top: 1rem;">Login</button>
+        <p style="margin-top: 1rem; text-align: center;">
+          Don't have an account? <a href="{{ url_for('signup') }}" class="btn btn-primary">Register</a>
+
+        </p>
+      </form>
+    </div>
+  </section>
+</body>
+</html>

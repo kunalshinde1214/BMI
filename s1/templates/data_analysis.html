@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Analysis & CSV Preview</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Data Analysis and CSV Preview</h1>
+    <nav>
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('form') }}">Predict</a>
+      <!-- Add more navigation links as needed -->
+    </nav>
+  </header>
+  
+  <section>
+    <h2>CSV Preview (First 10 Rows)</h2>
+    <div>
+      {{ preview|safe }}
+    </div>
+  </section>
+  
+  <section>
+    <h2>Descriptive Statistics</h2>
+    <div>
+      {{ description|safe }}
+    </div>
+  </section>
+  
+  <section>
+    <h2>Missing Values</h2>
+    <div>
+      {{ missing_values|safe }}
+    </div>
+  </section>
+  
+  <section>
+    <h2>Correlation Matrix</h2>
+    <div>
+      {{ correlation|safe }}
+    </div>
+  </section>
+  
+  <section>
+    <h2>Additional Insights</h2>
+    <p>{{ insights }}</p>
+  </section>
+  
+  <section>
+    <h2>Group Analysis (Gender vs. BMI_Post)</h2>
+    <div>
+      {{ group_analysis|safe }}
+    </div>
+  </section>
+  
+  <section>
+    <h2>Frequency Distribution of BMI_Post</h2>
+    <div>
+      {{ freq_distribution|safe }}
+    </div>
+  </section>
+  
+  <footer>
+    <p>&copy; 2025 COVID BMI Predictor. All rights reserved.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>500 - Internal Server Error</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  <style>
+    .error-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      background-color: var(--background);
+      color: var(--text);
+      padding: 2rem;
+    }
+    .error-container h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    .error-container p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .error-container a.button {
+      background: var(--primary);
+      color: var(--background);
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+    .error-container a.button:hover {
+      background: #1e40af;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-container">
+    <h1>500 - Internal Server Error</h1>
+    <p>Oops! Something went wrong on our end.</p>
+    <p>{{ error }}</p>
+    <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('form') }}">Predict</a>
+      <a href="https://v0-new-project-x32tphqb06w-ghxcyb.vercel.app/">Visualise</a>
+      <a href="https://bmidatabase.netlify.app/">Database</a>
+      <a href="{{ url_for('about') }}">About</a><a href="{{ url_for('home') }}" class="button">Return Home</a>
+  </div>
+</body>
+</html>
